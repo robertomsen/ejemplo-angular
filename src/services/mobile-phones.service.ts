@@ -31,7 +31,8 @@ export class MobilePhonesService {
   }
 
   getMobilePhone(id: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`, {
+    return this.http.get<any>(`${this.apiUrl}/devices-details.php`, {
+      params: {device_id: id},
       headers: {
         'x-rapidapi-key': 'e814500a77msh9c2a8385449d375p1d2061jsnc8976a3a52ae',
         'x-rapidapi-host': 'mobile-phones1.p.rapidapi.com',

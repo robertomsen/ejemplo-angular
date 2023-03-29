@@ -5,7 +5,12 @@ import { HomeComponent } from 'src/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
 
+const routes: Routes = [
+  { path: '/', component: HomeComponent },
+  { path: '**', redirectTo: 'home' },
+];
 
 @NgModule({
   declarations: [
@@ -15,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(routes),
   ],
   providers: [],
   bootstrap: [AppComponent]

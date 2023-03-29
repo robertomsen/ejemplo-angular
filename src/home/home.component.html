@@ -1,13 +1,15 @@
 <div class="container">
-    <div class="row">
-      <div class="col-md-4" *ngFor="let elemento of elementos">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">{{ elemento.name }}</h5>
-            <p class="card-text">{{ elemento.id }}</p>
-          </div>
-        </div>
-      </div>
+  <div class="card-body">
+    <select name="brands" (change)="miFuncion($event)">
+      <option *ngFor="let elemento of elementos"  value="{{elemento.id}}">
+        {{ elemento.name }}
+      </option>
+    </select>
+  </div>
+  <div id="devices-box">
+    <div class="device-box" *ngFor="let device of devices">
+      <img src="{{device.img}}" />
+      <p>{{ device.name }}</p>
     </div>
   </div>
-  
+</div>

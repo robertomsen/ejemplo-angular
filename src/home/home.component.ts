@@ -8,13 +8,32 @@ import { MobilePhonesService } from 'src/services/mobile-phones.service';
 })
 export class HomeComponent implements OnInit {
   elementos: any[] = [];
+  selectedBrand: any = 1;
+  devices: any[] = []
 
   constructor(private MobilePhonesService: MobilePhonesService) {}
 
   ngOnInit(): void {
-    this.MobilePhonesService.getMobilePhones().subscribe((data: any) => {
+    this.MobilePhonesService.getBrands().subscribe((data: any) => {
       this.elementos = data.data;
-      console.log(data);
     });
+
+    this.MobilePhonesService.getDevices(this.selectedBrand).subscribe((data: any) => {
+      this.devices = data.data;
+      console.log(data.data)
+    })
+  }
+
+  getDevices() {
+    this.MobilePhonesService.getDevices(this.selectedBrand).subscribe((data: any) => {
+      this.devices = data.data;
+      console.log(data.data)
+    })
+  }
+
+  miFuncion(event: Event) {
+    const target = event.target as HTMLInputElement;
+    this.selectedBrand = target.value;
+    this.getDevices();
   }
 }

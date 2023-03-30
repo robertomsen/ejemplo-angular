@@ -31,9 +31,14 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  miFuncion(event: Event) {
+  handleChangeBrand(event: Event) {
     const target = event.target as HTMLInputElement;
     this.selectedBrand = target.value;
     this.getDevices();
+  }
+
+  onChangeSearch(event: Event) {
+    const target = event.target as HTMLInputElement;
+    this.devices.filter((el => el.name.includes(target.value)))
   }
 }

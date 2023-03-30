@@ -1,10 +1,11 @@
 <div class="container">
   <div class="card-body">
-    <select name="brands" (change)="miFuncion($event)">
+    <select name="brands" (change)="handleChangeBrand($event)">
       <option *ngFor="let elemento of elementos"  value="{{elemento.id}}">
         {{ elemento.name }}
       </option>
     </select>
+    <input type="text" (keyup)="onChangeSearch($event)">
   </div>
   <div id="devices-box">
     <div class="device-box" *ngFor="let device of devices">

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { mockGetBrands } from 'src/mocks/mockGetBrands';
+import { mockGetDevices } from 'src/mocks/mockGetDevices';
 import { MobilePhonesService } from 'src/services/mobile-phones.service';
 
 @Component({
@@ -12,26 +14,41 @@ export class HomeComponent implements OnInit {
   fetchDevices: any[] = [];
   devices: any[] = [];
 
-
   constructor(private MobilePhonesService: MobilePhonesService) {}
 
   ngOnInit(): void {
-    this.MobilePhonesService.getBrands().subscribe((data: any) => {
-      this.elementos = data.data;
-    });
+    this.MobilePhonesService.getBrands().subscribe(
+      (data: any) => {
+        this.elementos = data.data;
+      },
+      () => {
+        this.elementos = mockGetBrands;
+      }
+    );
 
-    this.MobilePhonesService.getDevices(this.selectedBrand).subscribe((data: any) => {
-      this.fetchDevices = data.data;
-      this.devices = data.data;
-    })
+    this.MobilePhonesService.getDevices(this.selectedBrand).subscribe(
+      (data: any) => {
+        this.fetchDevices = data.data;
+        this.devices = data.data;
+      },
+      () => {
+        this.fetchDevices = mockGetDevices;
+        this.devices = mockGetDevices;
+      }
+    );
   }
 
   getDevices() {
-    this.MobilePhonesService.getDevices(this.selectedBrand).subscribe((data: any) => {
-      this.fetchDevices = data.data;
-      this.devices = data.data;
-      console.log(data.data)
-    })
+    this.MobilePhonesService.getDevices(this.selectedBrand).subscribe(
+      (data: any) => {
+        this.fetchDevices = data.data;
+        this.devices = data.data;
+      },
+      () => {
+        this.fetchDevices = mockGetDevices;
+        this.devices = mockGetDevices;
+      }
+    );
   }
 
   handleChangeBrand(event: Event) {
@@ -42,7 +59,9 @@ export class HomeComponent implements OnInit {
 
   onChangeSearch(event: Event) {
     const target = event.target as HTMLInputElement;
-    const result = this.fetchDevices.filter((el => el.name.includes(target.value)))
+    const result = this.fetchDevices.filter((el) =>
+      el.name.includes(target.value)
+    );
     this.devices = result;
   }
 }

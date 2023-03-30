@@ -14,7 +14,7 @@ export class MobilePhonesService {
   getBrands(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/brands.php`, {
       headers: {
-        'x-rapidapi-key': 'e814500a77msh9c2a8385449d375p1d2061jsnc8976a3a52ae',
+        'x-rapidapi-key': 'eab43adbb9msha5cd9e43c63a454p164635jsn25a0ffdf17a0',
         'x-rapidapi-host': 'mobile-phones1.p.rapidapi.com',
       },
     });
@@ -24,7 +24,7 @@ export class MobilePhonesService {
     return this.http.get<any>(`${this.apiUrl}/devices.php`, {
       params: {brand_id: brand_id},
       headers: {
-        'x-rapidapi-key': 'e814500a77msh9c2a8385449d375p1d2061jsnc8976a3a52ae',
+        'x-rapidapi-key': 'eab43adbb9msha5cd9e43c63a454p164635jsn25a0ffdf17a0',
         'x-rapidapi-host': 'mobile-phones1.p.rapidapi.com',
       },
     });
@@ -34,7 +34,7 @@ export class MobilePhonesService {
     return this.http.get<any>(`${this.apiUrl}/devices-details.php`, {
       params: {device_id: id},
       headers: {
-        'x-rapidapi-key': 'e814500a77msh9c2a8385449d375p1d2061jsnc8976a3a52ae',
+        'x-rapidapi-key': 'eab43adbb9msha5cd9e43c63a454p164635jsn25a0ffdf17a0',
         'x-rapidapi-host': 'mobile-phones1.p.rapidapi.com',
       },
     });

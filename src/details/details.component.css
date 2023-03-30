@@ -1,0 +1,17 @@
+#devices-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.device-box {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.device-box img {
+    width: 100px;
+}

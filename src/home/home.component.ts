@@ -9,7 +9,9 @@ import { MobilePhonesService } from 'src/services/mobile-phones.service';
 export class HomeComponent implements OnInit {
   elementos: any[] = [];
   selectedBrand: any = 1;
-  devices: any[] = []
+  fetchDevices: any[] = [];
+  devices: any[] = [];
+
 
   constructor(private MobilePhonesService: MobilePhonesService) {}
 
@@ -19,13 +21,14 @@ export class HomeComponent implements OnInit {
     });
 
     this.MobilePhonesService.getDevices(this.selectedBrand).subscribe((data: any) => {
+      this.fetchDevices = data.data;
       this.devices = data.data;
-      console.log(data.data)
     })
   }
 
   getDevices() {
     this.MobilePhonesService.getDevices(this.selectedBrand).subscribe((data: any) => {
+      this.fetchDevices = data.data;
       this.devices = data.data;
       console.log(data.data)
     })
@@ -39,6 +42,7 @@ export class HomeComponent implements OnInit {
 
   onChangeSearch(event: Event) {
     const target = event.target as HTMLInputElement;
-    this.devices.filter((el => el.name.includes(target.value)))
+    const result = this.fetchDevices.filter((el => el.name.includes(target.value)))
+    this.devices = result;
   }
 }
